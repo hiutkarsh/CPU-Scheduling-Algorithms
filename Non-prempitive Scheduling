@@ -1,0 +1,52 @@
+#include<stdio.h>
+void main()
+{
+int p[5],pr[5],bt[5],wt[5],tt[5];
+int n,i,j,small,temp,t,te;
+printf("enter the no of process");
+scanf("%d",&n);
+for(i=0;i<n;i++)
+        {
+        printf("enter the burst time of p[%d]" ,i);
+        scanf("%d",&bt[i]);
+        printf("set priority of p[%d]" ,i);
+        scanf("%d",&pr[i]);
+        p[i]=i;
+        }
+for(i=0;i<n;i++)
+        {
+        small=i;
+        for(j=i+1;j<n;j++)
+        {
+                if(pr[small]>pr[j])
+                {
+                small=j;
+                }
+          temp=p[i];
+          p[i]=p[small];
+          p[small]=temp;
+         t=bt[i];
+          bt[i]=bt[small];
+          bt[small]=t;
+          te=pr[i];
+          pr[i]=pr[small];
+          pr[small]=te;
+         
+          }
+          }
+          printf(" *the highest priority will be served first \n");
+          printf("\n priority      process     burst time");
+          for(i=0;i<n;i++)
+          {
+          printf(" \n %d     %d    %d \n",pr[i],p[i],bt[i]);
+          }
+          printf("waiting time     turnout time");
+          for(i=0;i<n;i++)
+          {
+          wt[0]=0;
+          wt[i+1]=wt[i]+bt[i];
+          tt[i]=wt[i]+bt[i];
+          printf(" \n %d  % d",wt[i] ,tt[i]);
+          }
+          }
+          
